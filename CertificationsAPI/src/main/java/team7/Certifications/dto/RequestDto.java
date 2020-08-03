@@ -3,12 +3,10 @@ package team7.Certifications.dto;
 import com.sun.istack.NotNull;
 import team7.Certifications.entity.Quarter;
 import team7.Certifications.entity.Status;
-import team7.Certifications.entity.User;
 
 
 public class RequestDto {
 
-    @NotNull
     private Integer id;
     @NotNull
     private Quarter quarter;
@@ -21,11 +19,11 @@ public class RequestDto {
     @NotNull
     private Status approvalStatus;
     @NotNull
-    private double cost;
-    @NotNull
     private String businessJustification;
-    @NotNull
-    private User user;
+
+    private Double cost;
+
+
 
     public Integer getId() {
         return id;
@@ -43,16 +41,8 @@ public class RequestDto {
         return category;
     }
 
-    public double getCost() {
-        return cost;
-    }
-
     public String getBusinessJustification() {
         return businessJustification;
-    }
-
-    public User getUser() {
-        return user;
     }
 
     public Quarter getQuarter() {
@@ -62,6 +52,11 @@ public class RequestDto {
     public Status getApprovalStatus() {
         return approvalStatus;
     }
+
+    public Double getCost() {
+        return cost;
+    }
+
 
     public void setId(Integer id) {
         this.id = id;
@@ -79,16 +74,8 @@ public class RequestDto {
         this.category = category;
     }
 
-    public void setCost(double cost) {
-        this.cost = cost;
-    }
-
-    public void setBusinessJustification(String bussinessJustification) {
-        this.businessJustification = bussinessJustification;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setBusinessJustification(String businessJustification) {
+        this.businessJustification = businessJustification;
     }
 
     public void setQuarter(Quarter quarter) {
@@ -98,5 +85,11 @@ public class RequestDto {
     public void setApprovalStatus(Status approvalStatus) {
         this.approvalStatus = approvalStatus;
     }
+
+    public void setCost(Double cost) {
+        this.cost = cost;
+    }
+
+
 }
 

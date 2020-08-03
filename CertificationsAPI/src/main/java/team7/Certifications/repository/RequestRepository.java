@@ -15,7 +15,7 @@ public List<Request> findAllByQuarter(Quarter quarter);
 public List<Request> findAllByApprovalStatus(Status status);
 public List<Request> findAllByQuarterAndApprovalStatus(Quarter quarter,Status status);
 public List<Request> findAllByUserId(int id);
-
+public List<Request> findByCertificationId(int id);
 
 
 }

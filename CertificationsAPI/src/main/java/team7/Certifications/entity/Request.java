@@ -1,6 +1,7 @@
 package team7.Certifications.entity;
 import javax.persistence.*;
 
+
 @Entity
 @Table
 public class Request {
@@ -21,13 +22,17 @@ public class Request {
     @Column(nullable = false)
     private  Status approvalStatus;
     @Column(nullable = false)
-    private double cost;
-    @Column(nullable = false)
     private String businessJustification;
 
-    @ManyToOne
-    @JoinColumn(nullable = false)
+
+    @OneToOne()
+    @JoinColumn( name = "user_id", referencedColumnName = "id",nullable = false)
     private User user;
+
+    @OneToOne()
+    @JoinColumn( name = "certification_id",referencedColumnName = "id",nullable =false)
+    private Certification certification;
+
 
     public Integer getId() {
         return id;
@@ -45,16 +50,8 @@ public class Request {
         return category;
     }
 
-    public double getCost() {
-        return cost;
-    }
-
     public String getBusinessJustification() {
         return businessJustification;
-    }
-
-    public User getUser() {
-        return user;
     }
 
     public Quarter getQuarter() {
@@ -63,6 +60,15 @@ public class Request {
 
     public Status getApprovalStatus() {
         return approvalStatus;
+    }
+
+
+    public User getUser() {
+        return user;
+    }
+
+    public Certification getCertification() {
+        return certification;
     }
 
     public void setId(Integer id) {
@@ -81,16 +87,8 @@ public class Request {
         this.category = category;
     }
 
-    public void setCost(double cost) {
-        this.cost = cost;
-    }
-
     public void setBusinessJustification(String bussinessJustification) {
         this.businessJustification = bussinessJustification;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public void setQuarter(Quarter quarter) {
@@ -99,5 +97,13 @@ public class Request {
 
     public void setApprovalStatus(Status approvalStatus) {
         this.approvalStatus = approvalStatus;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setCertification(Certification certification) {
+        this.certification = certification;
     }
 }

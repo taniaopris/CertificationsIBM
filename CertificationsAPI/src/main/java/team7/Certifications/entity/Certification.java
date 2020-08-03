@@ -13,6 +13,8 @@ public class Certification {
     private String title;
     @Column
     private String category;
+    @Column
+    private Double cost;
 
     public Integer getId() {
         return id;
@@ -26,6 +28,10 @@ public class Certification {
         return category;
     }
 
+    public double getCost() {
+        return cost;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -36,5 +42,9 @@ public class Certification {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
     }
 }

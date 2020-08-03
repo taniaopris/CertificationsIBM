@@ -11,6 +11,7 @@ import java.util.List;
 @Component
 public class RequestMapper {
 
+
     public RequestDto toDto(Request request)
     {
         RequestDto dto=new RequestDto();
@@ -18,11 +19,13 @@ public class RequestMapper {
         dto.setBusinessJustification(request.getBusinessJustification());
         dto.setCategory(request.getCategory());
         dto.setCertificationTitle(request.getCertificationTitle());
-        dto.setCost(request.getCost());
         dto.setParticipantName(request.getParticipantName());
         dto.setQuarter(request.getQuarter());
         dto.setApprovalStatus(request.getApprovalStatus());
-        dto.setUser(request.getUser());
+        Double cost=request.getCertification().getCost();
+        dto.setCost(cost);
+
+
 
         return dto;
     }
@@ -35,11 +38,11 @@ public class RequestMapper {
         request.setBusinessJustification(dto.getBusinessJustification());
         request.setCategory(dto.getCategory());
         request.setCertificationTitle(dto.getCertificationTitle());
-        request.setCost(dto.getCost());
         request.setParticipantName(dto.getParticipantName());
         request.setQuarter(dto.getQuarter());
         request.setApprovalStatus(dto.getApprovalStatus());
-        request.setUser(dto.getUser());
+
+
 
         return request;
 
@@ -66,4 +69,5 @@ public class RequestMapper {
         }
         return requests;
     }
+
 }

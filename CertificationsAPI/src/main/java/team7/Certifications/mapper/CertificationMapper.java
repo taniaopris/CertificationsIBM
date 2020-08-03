@@ -17,6 +17,7 @@ public class CertificationMapper {
         certification.setId(dtoCertification.getId());
         certification.setTitle(dtoCertification.getTitle());
         certification.setCategory(dtoCertification.getCategory());
+        certification.setCost(dtoCertification.getCost());
         return  certification;
     }
 
@@ -26,6 +27,7 @@ public class CertificationMapper {
         dtoCertification.setId(certification.getId());
         dtoCertification.setTitle(certification.getTitle());
         dtoCertification.setCategory(certification.getCategory());
+        dtoCertification.setCost(certification.getCost());
         return  dtoCertification;
     }
 
@@ -39,5 +41,6 @@ public class CertificationMapper {
         }
         return dtoCertifications;
     }
+
 
 }

@@ -1,24 +1,53 @@
 package team7.Certifications.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import team7.Certifications.dto.CertificationDto;
 import team7.Certifications.service.CertificationService;
 
 import java.util.List;
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping("/api/certifications")
 public class CertificationController {
 
     @Autowired
     private CertificationService certificationService;
 
-    @GetMapping("")
-    public List<CertificationDto> getAllCertifications()
+    @PostMapping(value="/addCertification",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+
+    public ResponseEntity <CertificationDto> createCertification( @RequestBody CertificationDto certificationDto)
     {
-        return this.certificationService.getAllCertifications();
+        CertificationDto newCertificationDto=certificationService.addCertification(certificationDto);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(newCertificationDto);
     }
+
+    @DeleteMapping(value="/deleteCertification/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+
+    public ResponseEntity<String> deleteCertification(@PathVariable("id") Integer id)
+    {
+        certificationService.deleteCertification(id);
+        return ResponseEntity.ok().body("Certification with id:"+id+" was deleted successfully!");
+    }
+
+    @GetMapping(value="/allCertifications",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<CertificationDto>> getAllCertifications()
+    {
+        List<CertificationDto> certificationsDto =this.certificationService.getAllCertifications();
+        return ResponseEntity.ok().body(certificationsDto);
+    }
+
+    @PutMapping(value = "editCertification/{id}",consumes = MediaType.APPLICATION_JSON_VALUE, produces =MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<CertificationDto> editCertification(@PathVariable("id") Integer id,@RequestBody CertificationDto certificationDto)
+    {
+        CertificationDto newCertificationDto=certificationService.updateCertification(id,certificationDto);
+        return ResponseEntity.ok().body(newCertificationDto);
+    }
+
+
 }
 

@@ -1,19 +1,29 @@
 package team7.Certifications.service;
 
 import org.springframework.stereotype.Service;
-import team7.Certifications.dto.RequestDto;
-import team7.Certifications.mapper.RequestMapper;
+import team7.Certifications.dto.UserDto;
+import team7.Certifications.entity.User;
+import team7.Certifications.mapper.UserMapper;
 import team7.Certifications.repository.UserRepository;
 
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
-    private  final RequestMapper requestMapper;
+    private  final UserMapper userMapper;
 
-    public UserService(UserRepository userRepository, RequestMapper requestMapper) {
+    public UserService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
-        this.requestMapper=requestMapper;
+        this.userMapper=userMapper;
+    }
+
+    public UserDto createUser(UserDto userDto)
+    {
+        User user=userMapper.toEntity(userDto);
+        User savedUser=userRepository.save(user);
+        UserDto savedUserDto=userMapper.toDto(savedUser);
+
+        return savedUserDto;
     }
 
 
