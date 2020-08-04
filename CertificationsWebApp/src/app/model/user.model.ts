@@ -1,4 +1,4 @@
-export class UserDTO {
+export class RequestDTO {
 
     constructor(id: number, name: string, role: string) {
         this.id = id;

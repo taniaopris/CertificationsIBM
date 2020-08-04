@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
-import { UserDTO } from '../../model/user.model';
+import { RequestDTO } from '../../model/user.model';
 import { UserService } from '../user.service';
 
 
@@ -10,13 +10,13 @@ import { UserService } from '../user.service';
 })
 export class UserListComponent {
 
-  @Input() user: UserDTO;
+  @Input() user: RequestDTO;
   @Output() userDeleted = new EventEmitter();
 
   constructor(private userService: UserService) {}
 
   // tslint:disable-next-line:typedef
-  deleteUser(userToDelete: UserDTO){
+  deleteUser(userToDelete: RequestDTO){
     this.userService.deleteUser(userToDelete.id).subscribe(() => this.userDeleted.emit());
 
   }

@@ -1,4 +1,4 @@
-import { UserDTO } from '../model/user.model';
+import { RequestDTO } from '../model/user.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -11,20 +11,20 @@ export class UserService {
 
     constructor(private http: HttpClient) { }
 
-    public getUserById(id: number): Observable<UserDTO> {
-        return this.http.get<UserDTO>(this.baseUrl + id);
+    public getUserById(id: number): Observable<RequestDTO> {
+        return this.http.get<RequestDTO>(this.baseUrl + id);
     }
 
-    public getAllUsers(): Observable<UserDTO[]> {
-        return this.http.get<UserDTO[]>(this.baseUrl + 'all');
+    public getAllUsers(): Observable<RequestDTO[]> {
+        return this.http.get<RequestDTO[]>(this.baseUrl + 'all');
     }
 
-    public addUser(user: UserDTO): Observable<UserDTO> {
-        return this.http.post<UserDTO>(this.baseUrl, user);
+    public addUser(user: RequestDTO): Observable<RequestDTO> {
+        return this.http.post<RequestDTO>(this.baseUrl, user);
     }
 
-    public updateUser(user: UserDTO): Observable<UserDTO> {
-        return this.http.put<UserDTO>(this.baseUrl + user.id, user);
+    public updateUser(user: RequestDTO): Observable<RequestDTO> {
+        return this.http.put<RequestDTO>(this.baseUrl + user.id, user);
     }
 
     public deleteUser(id: number): any {

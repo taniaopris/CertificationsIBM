@@ -6,12 +6,18 @@ import { AppComponent } from './app.component';
 import {UserListComponent} from './user/user-list/user-list.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {UserElementComponent} from './user/user-element/user-element.component';
+import {RequestListComponent} from './request/request-list/request-list.component';
+import {RequestElementComponent} from './request/request-element/request-element.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserListComponent
+    UserListComponent,
+    UserElementComponent,
+    RequestListComponent,
+    RequestElementComponent
 
   ],
   imports: [
