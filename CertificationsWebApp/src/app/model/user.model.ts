@@ -9,6 +9,4 @@ export class UserDTO {
     id: number
     name: string
     role: string
-
-    //what should I do with role? roleId or prop?
 }
