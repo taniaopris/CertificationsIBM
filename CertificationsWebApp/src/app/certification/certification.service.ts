@@ -4,28 +4,29 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
+// @ts-ignore
 export class CertificationService {
-    baseUrl = 'http://localhost:8080/api/certifications/'
+    baseUrl = 'http://localhost:8080/api/certifications/';
 
     constructor(private http: HttpClient) { }
 
     public getCertificationById(id: number): Observable<CertificationDTO> {
-        return this.http.get<CertificationDTO>(this.baseUrl + id)
+        return this.http.get<CertificationDTO>(this.baseUrl + id);
     }
 
     public getAllCertifications(): Observable<CertificationDTO[]> {
-        return this.http.get<CertificationDTO[]>(this.baseUrl + 'all')
+        return this.http.get<CertificationDTO[]>(this.baseUrl + 'all');
     }
 
     public addCertification(certification: CertificationDTO): Observable<CertificationDTO> {
-        return this.http.post<CertificationDTO>(this.baseUrl, certification)
+        return this.http.post<CertificationDTO>(this.baseUrl, certification);
     }
 
     public updateCertification(certification: CertificationDTO): Observable<CertificationDTO> {
-        return this.http.put<CertificationDTO>(this.baseUrl + certification.id, certification)
+        return this.http.put<CertificationDTO>(this.baseUrl + certification.id, certification);
     }
 
     public deleteCertification(id: number): any {
-        return this.http.delete(this.baseUrl + id)
+        return this.http.delete(this.baseUrl + id);
     }
 }
