@@ -2,7 +2,6 @@ export class RequestDTO {
 
     constructor(
         id: number,
-        name: string,
         quarter: string,
         participantName: string,
         certificationTitle: string,
