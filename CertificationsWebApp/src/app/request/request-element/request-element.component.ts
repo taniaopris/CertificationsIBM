@@ -12,12 +12,12 @@ export class RequestElementComponent {
 
 
   @Output() requestAdded = new EventEmitter<RequestDTO>();
-  @ViewChild('inputUserName', {static: false}) RequestInput;
+  @ViewChild('inputRequest', {static: false}) RequestInput;
 
   constructor(private requestService: RequestService) {}
 
   // tslint:disable-next-line:typedef
-  addUserToArray(){
+  addRequestToArray(){
     this.requestService.addRequest(this.RequestInput.nativeElement.value).subscribe(res => this.requestAdded.emit(res));
   }
 
