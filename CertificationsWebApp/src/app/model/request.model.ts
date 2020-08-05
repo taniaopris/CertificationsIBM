@@ -2,8 +2,7 @@ export class RequestDTO {
 
     constructor(
         id: number, 
-        name: string, 
-        quarter: string, 
+        quarter: Quarter, 
         participantName: string,
         certificationTitle: string,
         category: string,
@@ -11,18 +10,18 @@ export class RequestDTO {
         cost: number,
         businessJustification: string
         ) {
-        this.id = id
-        this.quarter = quarter
-        this.participantName = participantName
-        this.certificationTitle = certificationTitle
-        this.category = category
-        this.approvalStatus = approvalStatus
-        this.cost = cost
-        this.businessJustification = businessJustification
+        this.id = id;
+        this.quarter = quarter;
+        this.participantName = participantName;
+        this.certificationTitle = certificationTitle;
+        this.category = category;
+        this.approvalStatus = approvalStatus;
+        this.cost = cost;
+        this.businessJustification = businessJustification;
     }
 
     id: number;
-    quarter: string;
+    quarter: Quarter;
     participantName: string;
     certificationTitle: string;
     category: string;
@@ -35,4 +34,11 @@ export enum ApprovalStatus {
     Approved = 'Approved',
     Pending = 'Pending',
     Rejected = 'Rejected'
+}
+
+export enum Quarter {
+    Q1 = 'Q1',
+    Q2 = 'Q2',
+    Q3 = 'Q3',
+    Q4 = 'Q4'
 }
