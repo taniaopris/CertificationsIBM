@@ -17,7 +17,7 @@ public class CertificationController {
     @Autowired
     private CertificationService certificationService;
 
-    @PostMapping(value="/addCertification",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value="/admin/addCertification",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 
     public ResponseEntity <CertificationDto> createCertification( @RequestBody CertificationDto certificationDto)
     {
@@ -26,7 +26,7 @@ public class CertificationController {
         return ResponseEntity.status(HttpStatus.CREATED).body(newCertificationDto);
     }
 
-    @DeleteMapping(value="/deleteCertification/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value="/admin/deleteCertification/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
 
     public ResponseEntity<String> deleteCertification(@PathVariable("id") Integer id)
     {
@@ -41,7 +41,7 @@ public class CertificationController {
         return ResponseEntity.ok().body(certificationsDto);
     }
 
-    @PutMapping(value = "editCertification/{id}",consumes = MediaType.APPLICATION_JSON_VALUE, produces =MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/admin/editCertification/{id}",consumes = MediaType.APPLICATION_JSON_VALUE, produces =MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CertificationDto> editCertification(@PathVariable("id") Integer id,@RequestBody CertificationDto certificationDto)
     {
         CertificationDto newCertificationDto=certificationService.updateCertification(id,certificationDto);

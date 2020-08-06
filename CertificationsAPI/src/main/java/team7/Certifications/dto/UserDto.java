@@ -8,6 +8,8 @@ public class UserDto {
     @NotNull
     private String name;
 
+    @NotNull
+    private  String password;
 
 
     public Integer getId() {
@@ -19,6 +21,9 @@ public class UserDto {
     }
 
 
+    public String getPassword() {
+        return password;
+    }
 
     public void setId(Integer id) {
         this.id = id;
@@ -28,5 +33,9 @@ public class UserDto {
         this.name = name;
     }
 
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
 
