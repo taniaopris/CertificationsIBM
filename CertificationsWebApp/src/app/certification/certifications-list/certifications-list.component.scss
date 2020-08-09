@@ -1,0 +1,25 @@
+.certifications-list-content {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(245, 245, 245);
+
+    > div {
+        width: calc(50% - 50px);
+        float: left;
+        padding: 25px;
+    }
+
+    mat-card {
+        width: 500px;
+    }
+
+    > div:nth-child(odd) {
+        display: grid;
+        justify-content: end;
+    }
+
+    > div:nth-child(even) {
+        display: grid;
+        justify-content: start;
+    }
+}
