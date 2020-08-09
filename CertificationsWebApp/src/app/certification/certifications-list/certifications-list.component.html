@@ -1,1 +1,14 @@
-maca
+<div class="certifications-list-content">
+
+    <div *ngFor="let certification of certifications">
+
+        <mat-card>
+            <div>Title: {{ certification.title }}</div>
+            <div>Category: {{ certification.category }}</div>
+            <div>Cost: {{ certification.cost }}</div>
+            <button mat-raised-button color="accent" (click)="openNewRequestDialog(certification)">Apply</button>
+        </mat-card>
+
+    </div>
+
+</div>

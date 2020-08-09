@@ -1,0 +1,52 @@
+<mat-horizontal-stepper #stepper>
+
+    <mat-step>
+        <ng-template matStepLabel>Fill out your name</ng-template>
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Last name, First name" [(ngModel)]="name" name="name">
+        </mat-form-field>
+        <div>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+
+    <mat-step>
+        <ng-template matStepLabel>Fill out your business justification</ng-template>
+        <mat-form-field>
+            <mat-label>Business justification</mat-label>
+            <textarea matInput placeholder="Ex. It makes me feel..." [(ngModel)]="businessJustification"
+                name="businessJustification"></textarea>
+        </mat-form-field>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+
+    <mat-step>
+        <ng-template matStepLabel>Choose a quarter</ng-template>
+        <mat-form-field>
+            <mat-label>Quarter</mat-label>
+            <mat-select [(ngModel)]="quarter" name="quarter">
+                <mat-option *ngFor="let q of quarterList" [value]="q.value">
+                    {{ q.text }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="send()">Send</button>
+        </div>
+    </mat-step>
+
+</mat-horizontal-stepper>

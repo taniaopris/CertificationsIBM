@@ -1,1 +1,10 @@
-<router-outlet></router-outlet>
+<div class="app-container">
+    <mat-toolbar>
+        <button mat-button (click)="goToCertifications()">Certifications</button>
+        <button mat-button (click)="goToRequests()">Requests</button>
+    </mat-toolbar>
+
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+</div>

@@ -1,5 +1,9 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
-import { RequestDTO } from '../../model/request.model';
+
+// Models
+import { RequestDTO, ApprovalStatus } from '../../model/request.model';
+
+// Services
 import { RequestService } from '../request.service';
 
 @Component({
@@ -7,12 +11,28 @@ import { RequestService } from '../request.service';
     templateUrl: './requests-list.component.html',
     styleUrls: ['./requests-list.component.scss'],
 })
-export class RequestsListComponent {
+export class RequestsListComponent implements OnInit {
+
     requests: RequestDTO[];
+    PENDING = ApprovalStatus.Pending;
 
-    constructor(private requestService: RequestService) { }
+    constructor(
+        private requestService: RequestService
+    ) { }
 
-    getAllCertifications(){
-        this.requestService.getAllRequests().subscribe(res => this.requests = res)
-      }
+    ngOnInit(): void {
+        this.getAllRequests();
+    }
+
+    getAllRequests(): void {
+        this.requestService.getAllRequests().subscribe(res => this.requests = res);
+    }
+
+    approve(request: RequestDTO): void {
+        this.requestService.approveRequest(request);
+    }
+
+    reject(request: RequestDTO): void {
+        this.requestService.rejectRequest(request);
+    }
 }
