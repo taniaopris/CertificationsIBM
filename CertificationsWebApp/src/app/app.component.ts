@@ -19,4 +19,8 @@ export class AppComponent {
     goToRequests(): void {
         this.router.navigate(['/requests']);
     }
+
+    goToMyRequests(): void {
+        this.router.navigate(['/myrequests']);
+    }
 }

@@ -35,7 +35,10 @@ export class RequestService {
     }
 
     public deleteRequest(id: number): any {
-        return this.http.delete(this.baseUrl + id)
+        var index =  this.requests.findIndex(x => x.id === id);
+        //let r = this.requests.find(r => r.id === id);
+        delete this.requests[index];
+
     }
 
     public approveRequest(request: RequestDTO): void {

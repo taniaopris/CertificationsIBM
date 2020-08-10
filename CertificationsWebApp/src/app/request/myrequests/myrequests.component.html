@@ -1,0 +1,22 @@
+<div *ngFor="let request of requests" class="request-parent">
+
+    <mat-card>
+
+        <div>
+            <div>Participant name: {{ request.participantName }}</div>
+            <div>Title: {{ request.certificationTitle }}</div>
+            <div>Category: {{ request.category }}</div>
+            <div>Cost: {{ request.cost }}</div>
+            <div>Quarter: {{ request.quarter }}</div>
+            <div>Business justification: {{ request.businessJustification }}</div>
+            <div>Approval status: {{ request.approvalStatus }}</div>
+        </div>
+
+        <div>
+                <button mat-raised-button class="edit-button" (click)="edit(request)">Edit</button>
+                <button mat-raised-button class="delete-button" (click)="delete(request)">Delete</button>
+        </div>
+
+    </mat-card>
+
+</div>
