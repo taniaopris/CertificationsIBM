@@ -1,12 +1,14 @@
 .request-parent {
     padding: 25px;
-    background-color: #3d54d3;
+    background-color: #455A64;
 
     > mat-card {
         margin: auto;
         width: 600px;
         display: grid;
         grid-template-columns: 1fr auto;
+        background-color: #607D8B;
+
 
         > div:nth-child(1) {
             > div {
@@ -23,11 +25,11 @@
 
 .edit-button {
     color: white;
-    background-color: #4caf50;
+    background-color: #42c246;
     margin-right: 10px;
 }
 
 .delete-button {
     color: white;
-    background-color: #f44336;
+    background-color: #d1382e;
 }

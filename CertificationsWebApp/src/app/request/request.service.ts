@@ -51,7 +51,7 @@ export class RequestService {
         r.approvalStatus = ApprovalStatus.Rejected;
     }
 
-    // TO BE DELETED AFTER LINK TO BACKEND
+    // end - TO BE DELETED AFTER LINK TO BACKEND
 
     // public getRequestById(id: number): Observable<RequestDTO> {
     //     return this.http.get<RequestDTO>(this.baseUrl + id)
@@ -81,5 +81,4 @@ export class RequestService {
     //     return this.http.put<RequestDTO>(this.baseUrl + request.id + '/reject', request)
     // }
 
-    //method for filter?
 }
