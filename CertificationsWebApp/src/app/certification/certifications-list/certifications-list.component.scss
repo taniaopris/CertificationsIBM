@@ -1,7 +1,7 @@
 .certifications-list-content {
     width: 100%;
     height: 100%;
-    background-color: rgb(245, 245, 245);
+    background-color: #455a64;
 
     > div {
         width: calc(50% - 50px);
@@ -11,6 +11,13 @@
 
     mat-card {
         width: 500px;
+        background-color: #607d8b;
+        padding-bottom: 10px;
+
+        > div {
+            padding: 10px;
+            color: whitesmoke;
+        }
     }
 
     > div:nth-child(odd) {
@@ -24,7 +31,6 @@
     }
 }
 
-.nav-link
-{
-  color: white;
+.apply-button {
+    background-color: #18ffff;
 }

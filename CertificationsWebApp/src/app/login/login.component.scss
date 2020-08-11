@@ -1,14 +1,22 @@
-.container
-{
-    position: absolute;
-    top:20%;
-    left: 30%;
+.container {
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  width: 500px;
+
 }
-.alert
-{
+.alert {
   width: 50%;
 }
-input
-{
+input {
   width: 50%;
+}
+
+.btn {
+  background-color: #18ffff;
+  color: black;
+}
+
+.white {
+  color: white;
 }
