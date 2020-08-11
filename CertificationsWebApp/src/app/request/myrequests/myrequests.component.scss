@@ -8,6 +8,8 @@
         display: grid;
         grid-template-columns: 1fr auto;
         background-color: #607D8B;
+        color: whitesmoke;
+
 
 
         > div:nth-child(1) {
@@ -24,12 +26,14 @@
 }
 
 .edit-button {
-    color: white;
-    background-color: #42c246;
-    margin-right: 10px;
+    color: black;
+    background-color: #18ffff;
+    margin-right: 5px;
+    margin-bottom: 15px;
 }
 
 .delete-button {
-    color: white;
+    color: black;
     background-color: #d1382e;
+    margin-right: 5px;
 }

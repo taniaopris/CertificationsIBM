@@ -8,6 +8,7 @@
         display: grid;
         grid-template-columns: 1fr auto;
         background-color: #607D8B;
+        color: whitesmoke;
 
 
         > div:nth-child(1) {
@@ -24,12 +25,12 @@
 }
 
 .approve-button {
-    color: white;
-    background-color: #42c246;
+    color: black;
+    background-color: #18ffff;
     margin-right: 10px;
 }
 
 .reject-button {
-    color: white;
+    color: black;
     background-color: #d1382e;
 }
