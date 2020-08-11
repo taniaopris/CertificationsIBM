@@ -1,0 +1,33 @@
+.request-parent {
+  padding: 25px;
+  background-color: rgb(245, 245, 245);
+
+  > mat-card {
+      margin: auto;
+      width: 600px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+
+      > div:nth-child(1) {
+          > div {
+              padding-bottom: 10px;
+          }
+      }
+
+      > div:nth-child(2) {
+          display: grid;
+          align-content: center;
+      }
+  }
+}
+
+.approve-button {
+  color: white;
+  background-color: #4caf50;
+  margin-right: 10px;
+}
+
+.reject-button {
+  color: white;
+  background-color: #f44336;
+}

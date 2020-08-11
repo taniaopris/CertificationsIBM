@@ -111,9 +111,9 @@ public class RequestService {
     }
 
 
-    public List<RequestDto> getRequestsByUserId(int id)
+    public List<RequestDto> getRequestsByParticipantName(String participantName)
     {
-        List<Request> requests=requestRepository.findAllByUserId(id);
+        List<Request> requests=requestRepository.findAllByParticipantName(participantName);
         List<RequestDto> dtoRequests=this.requestMapper.toDtoList(requests);
         return  dtoRequests;
     }

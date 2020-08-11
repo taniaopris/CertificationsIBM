@@ -1,8 +1,14 @@
 <div class="app-container">
     <mat-toolbar>
+        <button mat-button (click)="goToLogin()">Login</button>
         <button mat-button (click)="goToCertifications()">Certifications</button>
-        <button mat-button (click)="goToMyRequests()">My Requests</button>
-        <button mat-button (click)="goToRequests()">Requests</button>
+        <button *ngIf="isAdmin()" mat-button (click)="goToRequests()">Requests</button>
+
+      <span>
+      <button *ngIf="!isAdmin() && isLoggedIn()" mat-button (click)="goToMyRequests()">My Requests</button>
+      <button mat-button (click)="goToLogout()">Logout</button>
+
+      </span>
     </mat-toolbar>
 
     <div>

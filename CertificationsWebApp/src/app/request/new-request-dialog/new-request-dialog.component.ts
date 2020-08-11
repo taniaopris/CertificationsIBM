@@ -44,7 +44,7 @@ export class NewRequestDialogComponent {
             this.data.certification.category, ApprovalStatus.Pending, this.data.certification.cost,
             this.businessJustification);
 
-        this.requestService.addRequest(request);
+        //this.requestService.addRequest(request);
 
         this.dialogRef.close();
     }

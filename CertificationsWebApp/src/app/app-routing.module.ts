@@ -1,27 +1,49 @@
+import { EditCertificationComponent } from './edit-certification/edit-certification.component';
+import { MyRequestsComponent } from './my-requests/my-requests.component';
+import { RouteGuardService } from './services/route-guard.service';
+import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CertificationsListComponent } from './certification/certifications-list/certifications-list.component';
 import { RequestsListComponent } from './request/requests-list/requests-list.component';
-import { MyRequestsComponent } from './request/myrequests/myrequests.component';
+import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
     {
         path: '',
-        redirectTo: '/certifications',
-        pathMatch: 'full'
+        redirectTo: '/login',
+        pathMatch: 'full',
     },
     {
         path: 'certifications',
-        component: CertificationsListComponent
+        component: CertificationsListComponent,
+        canActivate : [RouteGuardService]
     },
     {
         path: 'requests',
-        component: RequestsListComponent
+        component: RequestsListComponent,
+        canActivate : [RouteGuardService]
+    },
+
+    {
+      path: 'login',
+      component: LoginComponent
+    },
+
+    {
+      path: 'myRequests',
+      component: MyRequestsComponent
     },
     {
-        path: 'myrequests',
-        component: MyRequestsComponent
-    }
+      path: 'editCertification',
+      component: EditCertificationComponent
+    },
+
+    {
+      path: '**',
+      component: LoginComponent
+    },
+
 ];
 
 @NgModule({

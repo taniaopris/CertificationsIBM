@@ -21,7 +21,11 @@ import { AppComponent } from './app.component';
 import { CertificationsListComponent } from './certification/certifications-list/certifications-list.component';
 import { RequestsListComponent } from './request/requests-list/requests-list.component';
 import { NewRequestDialogComponent } from './request/new-request-dialog/new-request-dialog.component';
-import { MyRequestsComponent } from './request/myrequests/myrequests.component'
+import { LoginComponent } from './login/login.component';
+import { ErrorComponent } from './error/error.component';
+import { MyRequestsComponent } from './my-requests/my-requests.component';
+import { EditCertificationComponent } from './edit-certification/edit-certification.component';
+
 
 @NgModule({
     declarations: [
@@ -29,7 +33,11 @@ import { MyRequestsComponent } from './request/myrequests/myrequests.component'
         CertificationsListComponent,
         RequestsListComponent,
         NewRequestDialogComponent,
-        MyRequestsComponent
+        LoginComponent,
+        ErrorComponent,
+        MyRequestsComponent,
+        EditCertificationComponent,
+
     ],
     imports: [
         BrowserModule,

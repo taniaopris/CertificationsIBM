@@ -1,3 +1,4 @@
+
 import { RequestDTO, Quarter, ApprovalStatus } from '../model/request.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -5,80 +6,44 @@ import { Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class RequestService {
-    baseUrl = 'http://localhost:8080/api/requests/'
+
 
     constructor(private http: HttpClient) { }
 
-    // TO BE DELETED AFTER LINK TO BACKEND
 
-    requests: RequestDTO[] = [
-        new RequestDTO(1, Quarter.Q1, 'Name1', 'Title1', 'Category1', ApprovalStatus.Approved, 100, 'Justification1'),
-        new RequestDTO(2, Quarter.Q2, 'Name2', 'Title2', 'Category2', ApprovalStatus.Approved, 200, 'Justification2'),
-        new RequestDTO(3, Quarter.Q3, 'Name3', 'Title3', 'Category3', ApprovalStatus.Approved, 300, 'Justification3')
-    ];
+    requests: RequestDTO[];
 
-    public getRequestById(id: number): Observable<RequestDTO> {
-        return this.http.get<RequestDTO>(this.baseUrl + id)
+    public getRequestByParticipantName(name: string): Observable<RequestDTO[]> {
+
+        return this.http.get<Array<RequestDTO>>(`https://localhost:8443/api/requests/user/allRequests/${name}`);
     }
 
     public getAllRequests(): Observable<RequestDTO[]> {
-        return of(this.requests);
+        return this.http.get<Array<RequestDTO>>('https://localhost:8443/api/requests/admin/allRequests');
     }
 
-    public addRequest(request: RequestDTO): void {
-        request.id = this.requests.length + 1;
-        this.requests.push(request);
+    public addRequest(request: RequestDTO, name: string, certificationId : number): Observable<RequestDTO> {
+
+       // tslint:disable-next-line: max-line-length
+       let  userId = this.http.get<number>(`https://localhost:8443/api/users/user/${name}`);
+
+       return this.http.post<RequestDTO>(`https://localhost:8443/api/requests/user/userId/${userId}/certificationId/${certificationId}`, request);
     }
 
-    public updateRequest(request: RequestDTO): Observable<RequestDTO> {
-        return this.http.put<RequestDTO>(this.baseUrl + request.id, request)
+    public updateStatus(id: number,approvalStatus: string)
+    {
+      return this.http.patch(`https://localhost:8443/api/requests/admin/updateRequestStatus/${id}`,{status: approvalStatus});
+    }
+
+    public updateRequest(request: RequestDTO) {
+
+       // return this.http.put<RequestDTO>(this.baseUrl + request.id, request)
     }
 
     public deleteRequest(id: number): any {
-        var index =  this.requests.findIndex(x => x.id === id);
-        //let r = this.requests.find(r => r.id === id);
-        delete this.requests[index];
-
+       // return this.http.delete(this.baseUrl + id)
     }
 
-    public approveRequest(request: RequestDTO): void {
-        let r = this.requests.find(r => r.id === request.id);
-        r.approvalStatus = ApprovalStatus.Approved;
-    }
 
-    public rejectRequest(request: RequestDTO): void {
-        let r = this.requests.find(r => r.id === request.id);
-        r.approvalStatus = ApprovalStatus.Rejected;
-    }
-
-    // end - TO BE DELETED AFTER LINK TO BACKEND
-
-    // public getRequestById(id: number): Observable<RequestDTO> {
-    //     return this.http.get<RequestDTO>(this.baseUrl + id)
-    // }
-
-    // public getAllRequests(): Observable<RequestDTO[]> {
-    //     return this.http.get<RequestDTO[]>(this.baseUrl + 'all')
-    // }
-
-    // public addRequest(request: RequestDTO): Observable<RequestDTO> {
-    //     return this.http.post<RequestDTO>(this.baseUrl, request)
-    // }
-
-    // public updateRequest(request: RequestDTO): Observable<RequestDTO> {
-    //     return this.http.put<RequestDTO>(this.baseUrl + request.id, request)
-    // }
-
-    // public deleteRequest(id: number): any {
-    //     return this.http.delete(this.baseUrl + id)
-    // }
-
-    // public approveRequest(request: RequestDTO): Observable<RequestDTO> {
-    //     return this.http.put<RequestDTO>(this.baseUrl + request.id + '/approve', request)
-    // }
-
-    // public rejectRequest(request: RequestDTO): Observable<RequestDTO> {
-    //     return this.http.put<RequestDTO>(this.baseUrl + request.id + '/reject', request)
-    // }
 
 }

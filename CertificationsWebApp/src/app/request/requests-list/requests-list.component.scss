@@ -1,14 +1,12 @@
 .request-parent {
     padding: 25px;
-    background-color: #455A64;
+    background-color: rgb(245, 245, 245);
 
     > mat-card {
         margin: auto;
         width: 600px;
         display: grid;
         grid-template-columns: 1fr auto;
-        background-color: #607D8B;
-
 
         > div:nth-child(1) {
             > div {
@@ -25,11 +23,11 @@
 
 .approve-button {
     color: white;
-    background-color: #42c246;
+    background-color: #4caf50;
     margin-right: 10px;
 }
 
 .reject-button {
     color: white;
-    background-color: #d1382e;
+    background-color: #f44336;
 }

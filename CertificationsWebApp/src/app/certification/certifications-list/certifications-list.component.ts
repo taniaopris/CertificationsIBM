@@ -1,5 +1,5 @@
+import { CertificationDTO } from './../../model/certification.model';
 import { Component, OnInit } from '@angular/core';
-import { CertificationDTO } from '../../model/certification.model';
 import { CertificationService } from '../certification.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NewRequestDialogComponent } from '../../request/new-request-dialog/new-request-dialog.component';
@@ -14,7 +14,7 @@ export class CertificationsListComponent implements OnInit {
     certifications: CertificationDTO[];
 
     constructor(
-        private certificationService: CertificationService,
+      private certificationService: CertificationService,
         private dialog: MatDialog
     ) { }
 
@@ -23,7 +23,7 @@ export class CertificationsListComponent implements OnInit {
     }
 
     getAllCertifications(): void {
-        this.certificationService.getAllCertifications().subscribe(res => this.certifications = res)
+        this.certificationService.getAllCertifications().subscribe(res => this.certifications=res);
     }
 
     openNewRequestDialog(certification: CertificationDTO): void {
@@ -31,6 +31,22 @@ export class CertificationsListComponent implements OnInit {
             data: {
                 certification: certification
             }
+
         });
     }
+
+
+    delete(id: number)
+    {
+      this.certificationService.deleteCertification(id).subscribe(res =>console.log(res));
+    }
+
+    isAdmin(): boolean
+    {
+      let user = sessionStorage.getItem('USER');
+      if(user === 'admin') return true;
+      else return false;
+    }
+
+
 }

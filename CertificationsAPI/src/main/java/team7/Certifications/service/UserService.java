@@ -9,6 +9,8 @@ import team7.Certifications.exceptions.CustomException;
 import team7.Certifications.mapper.UserMapper;
 import team7.Certifications.repository.UserRepository;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -31,6 +33,13 @@ public class UserService {
         UserDto savedUserDto=userMapper.toDto(savedUser);
 
         return savedUserDto;
+    }
+
+    public Integer getUserIdByName(String name)
+    {
+        Optional<User> user=this.userRepository.findByName(name);
+        Integer id= user.get().getId();
+        return id;
     }
 
 

@@ -4,11 +4,16 @@
 
     > mat-toolbar {
         height: 60px;
-        background-color: #37474F;
     }
 
     > div:nth-child(2) {
         height: calc(100% - 60px);
         overflow: auto;
     }
+}
+
+span
+{
+  justify-content:flex-end;
+  align-items: flex-end;
 }

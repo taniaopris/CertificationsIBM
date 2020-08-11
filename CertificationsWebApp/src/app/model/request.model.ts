@@ -1,8 +1,8 @@
 export class RequestDTO {
 
     constructor(
-        id: number, 
-        quarter: Quarter, 
+        id: number,
+        quarter: Quarter,
         participantName: string,
         certificationTitle: string,
         category: string,
@@ -31,9 +31,9 @@ export class RequestDTO {
 }
 
 export enum ApprovalStatus {
-    Approved = 'Approved',
-    Pending = 'Pending',
-    Rejected = 'Rejected'
+    Approved = 'approved',
+    Pending = 'pending',
+    Rejected = 'rejected'
 }
 
 export enum Quarter {

@@ -1,0 +1,32 @@
+<div class="container">
+
+  <form #CertForm="ngForm" (ngSubmit)="editCertification()">
+    <div>
+    <div class="row">
+      <div class="col-md-12 mb-2">
+        <label>Title</label>
+        <input [(ngModel)]="title" name="title" type="text" class="form-control" id="title" required>
+      </div>
+    </div>
+      <div class="row">
+        <div class="col-md-12 mb-2">
+        <label>Category</label>
+        <input [(ngModel)]="category" name="category" type="text" class="form-control" id="category" required>
+      </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 mb-2">
+        <label>Cost</label>
+        <input [(ngModel)]="cost" name="cost" type="text" class="form-control" id="cost" required>
+      </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <button name='Button' class="btn btn-success" type="submit" [disabled]="CertForm.invalid">Login</button>
+    </div>
+  </div>
+  </form>
+  </div>
+

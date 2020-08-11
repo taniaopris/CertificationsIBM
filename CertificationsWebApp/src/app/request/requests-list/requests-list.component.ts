@@ -1,3 +1,4 @@
+
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 
 // Models
@@ -29,10 +30,12 @@ export class RequestsListComponent implements OnInit {
     }
 
     approve(request: RequestDTO): void {
-        this.requestService.approveRequest(request);
+
+        this.requestService.updateStatus(request.id, ApprovalStatus.Approved).subscribe(res => console.log(res));
     }
 
     reject(request: RequestDTO): void {
-        this.requestService.rejectRequest(request);
+
+      this.requestService.updateStatus(request.id, ApprovalStatus.Rejected).subscribe(res => console.log(res));
     }
 }
