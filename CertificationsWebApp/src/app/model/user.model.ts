@@ -1,12 +1,11 @@
 export class UserDTO {
 
-    constructor(id: number, name: string, role: string) {
-        this.id = id;
+    constructor(id: number, name: string, password: string) {
+
         this.name = name;
-        this.role = role;
+        this.password = password;
     }
 
-    id: number;
     name: string;
-    role: string;
+    password: string;
 }

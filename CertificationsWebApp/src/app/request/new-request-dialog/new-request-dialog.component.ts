@@ -40,7 +40,7 @@ export class NewRequestDialogComponent {
     ) { }
 
     send(): void {
-        const request = new RequestDTO(0, this.quarter, this.name, this.data.certification.title,
+        const request = new RequestDTO( this.quarter, this.name, this.data.certification.title,
             this.data.certification.category, ApprovalStatus.Pending, this.data.certification.cost,
             this.businessJustification);
 

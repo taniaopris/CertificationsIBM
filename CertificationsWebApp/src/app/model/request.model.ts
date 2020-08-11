@@ -1,7 +1,7 @@
 export class RequestDTO {
 
     constructor(
-        id: number,
+
         quarter: Quarter,
         participantName: string,
         certificationTitle: string,
@@ -10,7 +10,7 @@ export class RequestDTO {
         cost: number,
         businessJustification: string
         ) {
-        this.id = id;
+
         this.quarter = quarter;
         this.participantName = participantName;
         this.certificationTitle = certificationTitle;

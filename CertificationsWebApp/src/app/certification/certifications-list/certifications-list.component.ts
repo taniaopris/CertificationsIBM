@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CertificationDTO } from './../../model/certification.model';
 import { Component, OnInit } from '@angular/core';
 import { CertificationService } from '../certification.service';
@@ -15,6 +16,7 @@ export class CertificationsListComponent implements OnInit {
 
     constructor(
       private certificationService: CertificationService,
+      private router:Router,
         private dialog: MatDialog
     ) { }
 
@@ -47,6 +49,12 @@ export class CertificationsListComponent implements OnInit {
       if(user === 'admin') return true;
       else return false;
     }
+
+    edit(id:number)
+    {
+      this.router.navigate(['editCertification', id]);
+    }
+
 
 
 }

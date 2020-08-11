@@ -31,7 +31,7 @@ export class CertificationService {
     public updateCertification(id: number, certificationDTO: CertificationDTO): Observable<CertificationDTO> {
 
         // tslint:disable-next-line: max-line-length
-        return this.http.put<CertificationDTO>(`https://localhost:8443/api/certifications/admin/deleteCertification/${id}`,certificationDTO);
+        return this.http.put<CertificationDTO>(`https://localhost:8443/api/certifications/admin/editCertification/${id}`,certificationDTO);
     }
 
 

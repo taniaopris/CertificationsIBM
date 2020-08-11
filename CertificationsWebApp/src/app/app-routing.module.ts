@@ -35,7 +35,7 @@ const routes: Routes = [
       component: MyRequestsComponent
     },
     {
-      path: 'editCertification',
+      path: 'editCertification/:id',
       component: EditCertificationComponent
     },
 
