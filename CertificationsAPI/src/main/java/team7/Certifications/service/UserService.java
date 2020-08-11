@@ -1,9 +1,11 @@
 package team7.Certifications.service;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import team7.Certifications.dto.UserDto;
 import team7.Certifications.entity.User;
+import team7.Certifications.exceptions.CustomException;
 import team7.Certifications.mapper.UserMapper;
 import team7.Certifications.repository.UserRepository;
 
@@ -22,6 +24,7 @@ public class UserService {
 
     public UserDto createUser(UserDto userDto)
     {
+        if(userDto.getId()!=null)throw new CustomException(HttpStatus.EXPECTATION_FAILED,"New user should not have an ID");
         User user=userMapper.toEntity(userDto);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         User savedUser=userRepository.save(user);

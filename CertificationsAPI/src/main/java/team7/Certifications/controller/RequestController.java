@@ -89,7 +89,7 @@ public class RequestController {
          return ResponseEntity.ok().body(updatedRequest);
     }
 
-    @PatchMapping(value="/admin/approveRequest/{id}",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PatchMapping(value="/admin/updateRequestStatus/{id}",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<RequestDto> approveRequest(@PathVariable("id") Integer id, @RequestBody StatusDto statusDto)
     {
         String status=statusDto.getStatus();
