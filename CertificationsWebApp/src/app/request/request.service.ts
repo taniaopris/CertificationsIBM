@@ -35,7 +35,10 @@ export class RequestService {
     }
 
     public deleteRequest(id: number): any {
-        return this.http.delete(this.baseUrl + id)
+        var index =  this.requests.findIndex(x => x.id === id);
+        //let r = this.requests.find(r => r.id === id);
+        delete this.requests[index];
+
     }
 
     public approveRequest(request: RequestDTO): void {
@@ -48,7 +51,7 @@ export class RequestService {
         r.approvalStatus = ApprovalStatus.Rejected;
     }
 
-    // TO BE DELETED AFTER LINK TO BACKEND
+    // end - TO BE DELETED AFTER LINK TO BACKEND
 
     // public getRequestById(id: number): Observable<RequestDTO> {
     //     return this.http.get<RequestDTO>(this.baseUrl + id)
@@ -78,5 +81,4 @@ export class RequestService {
     //     return this.http.put<RequestDTO>(this.baseUrl + request.id + '/reject', request)
     // }
 
-    //method for filter?
 }

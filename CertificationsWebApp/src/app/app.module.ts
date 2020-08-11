@@ -21,13 +21,15 @@ import { AppComponent } from './app.component';
 import { CertificationsListComponent } from './certification/certifications-list/certifications-list.component';
 import { RequestsListComponent } from './request/requests-list/requests-list.component';
 import { NewRequestDialogComponent } from './request/new-request-dialog/new-request-dialog.component';
+import { MyRequestsComponent } from './request/myrequests/myrequests.component'
 
 @NgModule({
     declarations: [
         AppComponent,
         CertificationsListComponent,
         RequestsListComponent,
-        NewRequestDialogComponent
+        NewRequestDialogComponent,
+        MyRequestsComponent
     ],
     imports: [
         BrowserModule,
