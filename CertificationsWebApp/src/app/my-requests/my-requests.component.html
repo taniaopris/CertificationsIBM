@@ -1,9 +1,8 @@
-<div *ngFor="let request of requests">
+<div *ngFor="let request of requests" class="request-parent">
 
   <mat-card>
 
       <div>
-
           <div>Title: {{ request.certificationTitle }}</div>
           <div>Category: {{ request.category }}</div>
           <div>Cost: {{ request.cost }}</div>
@@ -12,6 +11,13 @@
           <div>Approval status: {{ request.approvalStatus }}</div>
       </div>
 
+      <div>
+              <button *ngIf="isPending(request)" mat-raised-button class="edit-button"(click)="clickOn(request)" >Edit</button>
+              <textarea class="textarea" *ngIf="isClicked() && isSelected(request)" [(ngModel)]="businessJustification"></textarea>
+              <button class="edit-button" *ngIf="isClicked() && isSelected(request)" (click)="edit(request)">Update</button>
+              <button mat-raised-button class="delete-button" (click)="delete(request)">Delete</button>
+
+      </div>
 
   </mat-card>
 

@@ -6,8 +6,7 @@
             <div>Title: {{ certification.title }}</div>
             <div>Category: {{ certification.category }}</div>
             <div>Cost: {{ certification.cost }}</div>
-           <button mat-raised-button color="accent" (click)="openNewRequestDialog(certification)">Apply</button>
-            <button  *ngIf="isAdmin()"class="btn btn-success" (click)="edit(certification.id)">Edit</button>
+           <button  *ngIf="!isAdmin()" mat-raised-button class="apply-button" (click)="openNewRequestDialog(certification)">Apply</button>
             <button *ngIf="isAdmin()" class="btn btn-danger" (click)="delete(certification.id)">Delete</button>
         </mat-card>
 

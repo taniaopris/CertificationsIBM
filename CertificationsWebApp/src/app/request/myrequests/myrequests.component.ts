@@ -21,6 +21,7 @@ export class MyRequestsComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+
         this.getAllRequests();
     }
 

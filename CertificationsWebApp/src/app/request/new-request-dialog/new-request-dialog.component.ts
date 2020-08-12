@@ -1,3 +1,4 @@
+
 import { Component, Inject } from '@angular/core';
 import { Quarter, RequestDTO, ApprovalStatus } from '../../model/request.model';
 import { RequestService } from '../request.service';
@@ -44,8 +45,15 @@ export class NewRequestDialogComponent {
             this.data.certification.category, ApprovalStatus.Pending, this.data.certification.cost,
             this.businessJustification);
 
-        //this.requestService.addRequest(request);
+        console.log(request);
+        let id;
+        const name = sessionStorage.getItem('USER');
+        this.requestService.getId(name).subscribe(res =>
+          {
+            id = res;
+            this.requestService.addRequest(request , id, this.data.certification.id).subscribe(res => console.log(res));
+            this.dialogRef.close();
+          });
 
-        this.dialogRef.close();
     }
 }

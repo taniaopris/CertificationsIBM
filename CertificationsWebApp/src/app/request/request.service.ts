@@ -3,6 +3,7 @@ import { RequestDTO, Quarter, ApprovalStatus } from '../model/request.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { throwMatDialogContentAlreadyAttachedError } from '@angular/material/dialog';
 
 @Injectable({ providedIn: 'root' })
 export class RequestService {
@@ -22,12 +23,18 @@ export class RequestService {
         return this.http.get<Array<RequestDTO>>('https://localhost:8443/api/requests/admin/allRequests');
     }
 
-    public addRequest(request: RequestDTO, name: string, certificationId : number): Observable<RequestDTO> {
+    public getId(name: string)
+    {
 
-       // tslint:disable-next-line: max-line-length
-       let  userId = this.http.get<number>(`https://localhost:8443/api/users/user/${name}`);
+      return this.http.get<number>(`https://localhost:8443/api/users/user/${name}`);
 
-       return this.http.post<RequestDTO>(`https://localhost:8443/api/requests/user/userId/${userId}/certificationId/${certificationId}`, request);
+    }
+
+    public addRequest(request: RequestDTO, userId: number, certificationId : number): any {
+
+        // tslint:disable-next-line: max-line-length
+        return this.http.post<RequestDTO>(`https://localhost:8443/api/requests/user/userId/${userId}/certificationId/${certificationId}`, request);
+
     }
 
     public updateStatus(id: number,approvalStatus: string)
@@ -35,15 +42,16 @@ export class RequestService {
       return this.http.patch(`https://localhost:8443/api/requests/admin/updateRequestStatus/${id}`,{status: approvalStatus});
     }
 
-    public updateRequest(request: RequestDTO) {
+    public updateBusinessJustification(requestId: number, businessJustification: string) {
 
-       // return this.http.put<RequestDTO>(this.baseUrl + request.id, request)
+      return this.http.patch(`https://localhost:8443/api/requests/user/updateBusinessJustification/${requestId}`,{"businessJustification":businessJustification});
     }
 
-    public deleteRequest(id: number): any {
-       // return this.http.delete(this.baseUrl + id)
-    }
 
+    public deleteRequest(id: number): any{
+
+        return this.http.delete(`https://localhost:8443/api/requests/user/deleteRequest/${id}`);
+    }
 
 
 }

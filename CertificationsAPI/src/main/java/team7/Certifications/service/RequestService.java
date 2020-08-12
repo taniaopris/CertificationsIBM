@@ -95,6 +95,21 @@ public class RequestService {
      return requestMapper.toDto(existingRequest.get());
     }
 
+
+    public RequestDto updateBusinessJustification(String businessJustification, Integer id)
+    {
+
+        Optional<Request> existingRequest=this.requestRepository.findById(id);
+        existingRequest.orElseThrow(() ->new CustomException(HttpStatus.NOT_FOUND,"Request with id:"+id+" not found"));
+        Request request=existingRequest.get();
+
+
+        request.setBusinessJustification(businessJustification);
+        requestRepository.save(request);
+        RequestDto updatedRequestDto=this.requestMapper.toDto(request);
+        return updatedRequestDto;
+
+    }
     public void deleteRequest(int id)
     {
         Optional<Request> existingRequest =this.requestRepository.findById(id);

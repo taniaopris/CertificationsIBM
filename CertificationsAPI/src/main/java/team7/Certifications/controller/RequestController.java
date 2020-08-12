@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import team7.Certifications.dto.BusinessJustificationDto;
 import team7.Certifications.dto.RequestDto;
 import team7.Certifications.dto.StatusDto;
 import team7.Certifications.service.RequestService;
@@ -95,6 +96,14 @@ public class RequestController {
         String status=statusDto.getStatus();
       RequestDto updatedRequestDto=requestService.updateStatus(status,id);
       return ResponseEntity.ok().body(updatedRequestDto);
+    }
+
+    @PatchMapping(value="/user/updateBusinessJustification/{id}",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<RequestDto> updateBusinessJustification(@PathVariable("id") Integer id, @RequestBody BusinessJustificationDto businessJustificationDto)
+    {
+        String justification=businessJustificationDto.getBusinessJustification();
+        RequestDto updatedRequestDto=requestService.updateBusinessJustification(justification,id);
+        return ResponseEntity.ok().body(updatedRequestDto);
     }
 
 

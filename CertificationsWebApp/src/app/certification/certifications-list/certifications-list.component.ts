@@ -40,7 +40,11 @@ export class CertificationsListComponent implements OnInit {
 
     delete(id: number)
     {
-      this.certificationService.deleteCertification(id).subscribe(res =>console.log(res));
+      this.certificationService.deleteCertification(id).subscribe(res =>
+        {
+          console.log(res);
+          this.getAllCertifications();
+        });
     }
 
     isAdmin(): boolean

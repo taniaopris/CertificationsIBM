@@ -20,7 +20,7 @@ export class CertificationService {
     }
 
     public deleteCertification(id: number): any {
-      return this.http.delete<string>(`https://localhost:8443/api/certifications/admin/deleteCertification/${id}`);
+      return this.http.delete(`https://localhost:8443/api/certifications/admin/deleteCertification/${id}`);
   }
 
 

@@ -1,6 +1,6 @@
 <div class="container">
 
-  <form #CertForm="ngForm" (ngSubmit)="editCertification()">
+  <form #CertForm="ngForm">
     <div>
     <div class="row">
       <div class="col-md-12 mb-2">
@@ -18,7 +18,7 @@
       <div class="row">
         <div class="col-md-12 mb-2">
         <label>Cost</label>
-        <input [(ngModel)]="cost" name="cost" type="text" class="form-control" id="cost" required>
+        <input [(ngModel)]="category" name="cost" type="text" class="form-control" id="cost" required>
       </div>
       </div>
   </div>

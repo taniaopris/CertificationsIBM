@@ -16,27 +16,14 @@ export class RequestsListComponent implements OnInit {
 
     requests: RequestDTO[];
     PENDING = ApprovalStatus.Pending;
-//
-    _listFilter = '';
-    get listFilter(): string {
-      return this._listFilter;
-    }
-    set listFilter(value: string) {
-      this._listFilter = value;
-      this.filteredRequests = this.listFilter ? this.performFilter(this.listFilter) : this.requests;
-    }
-  
-    filteredRequests: RequestDTO[] = [];
-//
+
     constructor(
         private requestService: RequestService
     ) { }
 
     ngOnInit(): void {
         this.getAllRequests();
-        //
-        this.filteredRequests = this.requests;
-        //
+
     }
 
     getAllRequests(): void {
@@ -45,18 +32,21 @@ export class RequestsListComponent implements OnInit {
 
     approve(request: RequestDTO): void {
 
-        this.requestService.updateStatus(request.id, ApprovalStatus.Approved).subscribe(res => console.log(res));
+        this.requestService.updateStatus(request.id, ApprovalStatus.Approved).subscribe(res =>
+          {
+            console.log(res);
+            this.getAllRequests();
+
+          });
     }
 
     reject(request: RequestDTO): void {
 
-      this.requestService.updateStatus(request.id, ApprovalStatus.Rejected).subscribe(res => console.log(res));
+      this.requestService.updateStatus(request.id, ApprovalStatus.Rejected).subscribe(res =>
+        {
+          console.log(res);
+          this.getAllRequests();
+        });
     }
-//
-    performFilter(filterBy: string): RequestDTO[] {
-        filterBy = filterBy.toLocaleLowerCase();
-        return this.requests.filter((request: RequestDTO) =>
-          request.certificationTitle.toLocaleLowerCase().indexOf(filterBy) !== -1);
-      }
-      //
+
 }
