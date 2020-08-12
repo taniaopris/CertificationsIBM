@@ -1,3 +1,4 @@
+import { AdminGuardService } from './services/admin-guard.service';
 import { EditCertificationComponent } from './edit-certification/edit-certification.component';
 import { MyRequestsComponent } from './my-requests/my-requests.component';
 import { RouteGuardService } from './services/route-guard.service';
@@ -11,8 +12,7 @@ import { ErrorComponent } from './error/error.component';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: '/login',
-        pathMatch: 'full',
+        component: LoginComponent
     },
     {
         path: 'certifications',
@@ -22,7 +22,7 @@ const routes: Routes = [
     {
         path: 'requests',
         component: RequestsListComponent,
-        canActivate : [RouteGuardService]
+        canActivate : [RouteGuardService, AdminGuardService]
     },
 
     {

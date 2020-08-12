@@ -26,6 +26,12 @@ export class LoginService {
      if(user!=null)return true;
      else return false;
   }
+  isAdmin()
+  {
+     let user = sessionStorage.getItem('USER');
+     if(user==='admin')return true;
+     else return false;
+  }
 
 
 }
